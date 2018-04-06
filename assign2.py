@@ -213,28 +213,27 @@ def evaluatePrecision(filename, k=10):
 
 
 
-#dblp2005, dblp2005w, dblp2006 = createGraphs()
-#saveGraph(dblp2005, 'dblp2005.edgelist')
-#saveGraph(dblp2005w, 'dblp2005w.edgelist')
-#saveGraph(dblp2006, 'dblp2006.edgelist')
+dblp2005, dblp2005w, dblp2006 = createGraphs()
+saveGraph(dblp2005, 'dblp2005.edgelist')
+saveGraph(dblp2005w, 'dblp2005w.edgelist')
+saveGraph(dblp2006, 'dblp2006.edgelist')
 
-#numberOfEdgesAndNodes(dblp2005, "dblp2005")									#A (a)
-#numberOfEdgesAndNodes(dblp2006, "dblp2006")									#A (b)
-#numberOfEdgesAndNodes(dblp2005w, "dblp2005w")									#A (c)
+numberOfEdgesAndNodes(dblp2005, "dblp2005")										#A (a)
+numberOfEdgesAndNodes(dblp2006, "dblp2006")										#A (b)
+numberOfEdgesAndNodes(dblp2005w, "dblp2005w")									#A (c)
 
 
-#print("Calculating pagerank for each graph")
-'''
-calculatePageRank(scc_dblp2005, "dblp2005")										#B part i
-calculatePageRank(scc_dblp2006, "dblp2006")	
-calculatePageRank(scc_dblp2005w, "dblp2005w")
-'''
+print("Calculating pagerank for each graph")
+calculatePageRank(dblp2005, "dblp2005")											#B part i
+calculatePageRank(dblp2006, "dblp2006")	
+calculatePageRank(dblp2005w, "dblp2005w")
+
 
 calculateBetweenness(loadGraph('dblp2005.edgelist'), 'dblp2005')
 calculateBetweenness(loadGraph('dblp2005w.edgelist'), 'dblp2005w')
 calculateBetweenness(loadGraph('dblp2006.edgelist'), 'dblp2006')
 
-'''
+
 print("Creating core 2005 graph...")
 core2005 = createCoreGraph(dblp2005)											#C part i
 saveGraph(core2005, 'core2005.edgelist')
@@ -245,13 +244,13 @@ saveGraph(core2006, 'core2006.edgelist')
 numberOfEdgesAndNodes(core2005, "core2005")										
 numberOfEdgesAndNodes(core2006, "core2006")									
 
-#print("Finding friends of friends...")
-#findFoF(core2005)																#C part iii
+print("Finding friends of friends...")
+findFoF(core2005)																#C part iii
 
 print("Finding target edges (T)...")
 findTEdges(core2005, core2006)													#C part iv
-'''
-'''
+
+
 randomEdges()																	#C part v.a	
 commonNeighbors()																#C part v.b
 jaccard()																		#C part v.c
@@ -294,4 +293,3 @@ evaluatePrecision('adamic_adar.edgelist', k=20)
 evaluatePrecision('adamic_adar.edgelist', k=50)
 evaluatePrecision('adamic_adar.edgelist', k=100)
 evaluatePrecision('adamic_adar.edgelist', k=numEdgesT)
-'''
